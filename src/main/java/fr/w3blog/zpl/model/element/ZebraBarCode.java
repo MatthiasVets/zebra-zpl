@@ -11,11 +11,11 @@ import fr.w3blog.zpl.utils.ZplUtils;
 
 /**
  * Abstract Zebra element to represent a bar code instruction
- * 
+ *
  * Command ZPL : All instruction starting ^B
- * 
+ *
  * @author ttropard
- * 
+ *
  */
 public abstract class ZebraBarCode extends ZebraElement {
 
@@ -28,7 +28,7 @@ public abstract class ZebraBarCode extends ZebraElement {
 
 	/**
 	 * Parameters used to print text( default on bellow)
-	 * 
+	 *
 	 */
 	boolean showTextInterpretation = true;
 
@@ -41,7 +41,7 @@ public abstract class ZebraBarCode extends ZebraElement {
 
 	/**
 	 * Default Constructeur width position and text
-	 * 
+	 *
 	 * @param positionX
 	 *            left margin (explain in dots)
 	 * @param positionY
@@ -60,7 +60,7 @@ public abstract class ZebraBarCode extends ZebraElement {
 
 	/**
 	 * Default Constructeur width position and text
-	 * 
+	 *
 	 * @param positionX
 	 *            left margin (explain in dots)
 	 * @param positionY
@@ -82,10 +82,10 @@ public abstract class ZebraBarCode extends ZebraElement {
 		this.moduleWidth = moduleWidth;
 		this.wideBarRatio = wideBarRatio;
 	}
-	
+
 	   /**
      * Default Constructor width position and text
-     * 
+     *
      * @param positionX
      *            left margin (explain in dots)
      * @param positionY
@@ -113,7 +113,7 @@ public abstract class ZebraBarCode extends ZebraElement {
 
 	/**
 	 * Constructeur used to print text (above or below) with code
-	 * 
+	 *
 	 * @param positionX
 	 *            left margin (explain in dots)
 	 * @param positionY
@@ -140,7 +140,6 @@ public abstract class ZebraBarCode extends ZebraElement {
 		StringBuilder zpl = new StringBuilder();
 		//On précise la position
 		zpl.append(getZplCodePosition());
-		zpl.append("\n");
 		if (moduleWidth != null) {
 			zpl.append(ZplUtils.zplCommandSautLigne("BY", moduleWidth, wideBarRatio, barCodeHeigth));
 		}
@@ -150,12 +149,13 @@ public abstract class ZebraBarCode extends ZebraElement {
 	/**
 	 * Used to draw label preview.
 	 * This method should be overloader by child class.
-	 * 
+	 *
 	 * Default draw a rectangle
-	 * 
+	 *
 	 * @param graphic
 	 */
-	public void drawPreviewGraphic(PrinterOptions printerOptions, Graphics2D graphic) {
+	@Override
+    public void drawPreviewGraphic(PrinterOptions printerOptions, Graphics2D graphic) {
 		int top = 0;
 		int left = 0;
 		if (positionX != null) {

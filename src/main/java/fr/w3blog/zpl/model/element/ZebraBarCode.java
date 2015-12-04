@@ -139,10 +139,11 @@ public abstract class ZebraBarCode extends ZebraElement {
 	public StringBuilder getStartZplCodeBuilder() {
 		StringBuilder zpl = new StringBuilder();
 		//On précise la position
-		zpl.append(getZplCodePosition());
 		if (moduleWidth != null) {
 			zpl.append(ZplUtils.zplCommandSautLigne("BY", moduleWidth, wideBarRatio, barCodeHeigth));
 		}
+		zpl.append(getZplCodePosition());
+		zpl.append("\n");
 		return zpl;
 	}
 
